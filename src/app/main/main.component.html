@@ -7,8 +7,7 @@
       <input type="text" (input)="onStock($event)" id="fname" name="firstname" placeholder="Enter stock ticker symbol here...">
       <p class="validator_true" *ngIf="stock_is_true">This is a valid stock symbol</p>
       <p class="validator_false" *ngIf="stock_is_true === false">Please enter a valid stock symbol</p>
-
-      <button (click)="getStocks()" mat-raised-button color="primary" [disabled]="!stock_is_true">Submit</button>
     </form>
+      <button (click)="getStocks()" mat-raised-button color="primary" [disabled]="!stock_is_true">Submit</button>
   </div>
 </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DATA } from '../data/ticker_symbols';
 import { MessageService } from '../message.service';
+import {MatDialog} from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component'
 
 @Component({
   selector: 'app-main',
@@ -9,7 +11,8 @@ import { MessageService } from '../message.service';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private http: MessageService) { }
+  constructor(private http: MessageService,
+              public dialog: MatDialog) { }
 
   data: any;
   stock: any;
@@ -33,8 +36,17 @@ export class MainComponent implements OnInit {
 
 
   getStocks() {
-    this.http.getUrl('https://api.openbrewerydb.org/breweries?by_state=missouri&sort=type,-name')
-    .subscribe(x => {this.api_data = x, console.log(x), console.log("Hello world!")})
+
+    var url_pt1 = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="
+    var url_pt2 = "&outputsize=full&apikey=BQCUKE3R9K0EQ76H"
+
+    this.http.getUrl(url_pt1 + this.stock + url_pt2).subscribe(x => {this.api_data = x, console.log(x)})
+
+    const dialogRef = this.dialog.open(ModalComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

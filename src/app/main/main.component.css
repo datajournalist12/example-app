@@ -1,0 +1,38 @@
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.form_wrapper {
+  width: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25vh;
+  margin-bottom:25vh;
+}
+
+.validator_true {
+  color: green;
+  font-size: 13px;
+}
+
+.description {
+  text-align: center;
+}
+
+.validator_false {
+  color: red;
+  font-size: 13px;
+}

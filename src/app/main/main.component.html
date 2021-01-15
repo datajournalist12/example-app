@@ -1,10 +1,10 @@
-<div class="form_wrapper">
+<div *ngIf="display" class="form_wrapper">
   <h2 class="description">Look up data on yesterday's stocks</h2>
   <div>
 
-    <form>
+    <form id="myForm">
       <label for="fname">Stock Symbol</label>
-      <input type="text" (input)="onStock($event)" id="fname" name="firstname" placeholder="Enter stock ticker symbol here...">
+      <input type="text" (input)="onStock($event)" id="myInput" name="firstname" placeholder="Enter stock ticker symbol here...">
       <p class="validator_true" *ngIf="stock_is_true">This is a valid stock symbol</p>
       <p class="validator_false" *ngIf="stock_is_true === false">Please enter a valid stock symbol</p>
     </form>

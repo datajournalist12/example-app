@@ -19,6 +19,7 @@ export class MainComponent implements OnInit {
   stock: any;
   stock_is_true: any;
   api_data: any;
+  display: any = true;
 
   ngOnInit(): void {
     this.data = DATA;
@@ -44,9 +45,13 @@ export class MainComponent implements OnInit {
     this.http.getUrl(url_pt1 + this.stock + url_pt2).subscribe(x => {this.messageService.sendMessage(x)})
 
     const dialogRef = this.dialog.open(ModalComponent);
+    this.display = false;
+    this.stock_is_true = null;
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.display = true;
+      // (<any>$(document)).getElementById('myForm').value = '';
     });
   }
 

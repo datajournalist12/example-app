@@ -12,7 +12,8 @@ import { ModalComponent } from '../modal/modal.component'
 export class MainComponent implements OnInit {
 
   constructor(private http: MessageService,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog,
+              private messageService: MessageService) { }
 
   data: any;
   stock: any;
@@ -25,7 +26,7 @@ export class MainComponent implements OnInit {
   }
 
   onStock(event: any) {
-    this.stock = event.target.value
+    this.stock = event.target.value.toUpperCase()
 
     if (this.data.includes(event.target.value.toUpperCase()) === true && event.target.value.length > 0) {
       this.stock_is_true = true;
@@ -40,7 +41,7 @@ export class MainComponent implements OnInit {
     var url_pt1 = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="
     var url_pt2 = "&outputsize=full&apikey=BQCUKE3R9K0EQ76H"
 
-    this.http.getUrl(url_pt1 + this.stock + url_pt2).subscribe(x => {this.api_data = x, console.log(x)})
+    this.http.getUrl(url_pt1 + this.stock + url_pt2).subscribe(x => {this.messageService.sendMessage(x)})
 
     const dialogRef = this.dialog.open(ModalComponent);
 

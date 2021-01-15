@@ -15,7 +15,8 @@ div {
 }
 
 .form_wrapper {
-  width: 600px;
+  width: 45vw;
+  height: 35vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
